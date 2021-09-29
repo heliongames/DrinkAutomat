@@ -32,11 +32,6 @@ namespace DrinkAutomat
             priceArray.Add(56, 6.20f);
         }
 
-        private static void SendMessageToConsole(string _value)
-        {
-            Console.WriteLine(_value);
-        }
-
         private static void ReadConsoleForDrinkId()
         {
             do
@@ -47,15 +42,14 @@ namespace DrinkAutomat
                 {
                     if (drinkArray.ContainsKey(_key))
                     {
-                        SendMessageToConsole($"Thank you, you did selected {drinkArray[_key]} for {priceArray[_key]}$");
+                        SendMessageToConsole($"Thank you, you did selected {drinkArray[_key]} for {priceArray[_key]}$!");
                         break;
                     } 
                     else
                     {
-                        SendMessageToConsole("Sorry, no drink found");
+                        SendMessageToConsole("Sorry, no drink found :(");
                     }
                 }
-
             } while (true);
         }
         private static void ReadConsoleForDrinkList()
@@ -70,7 +64,6 @@ namespace DrinkAutomat
                     SendMessageToConsole("\n");
                     break;
                 }
-
             } while (true);
         }
 
@@ -80,6 +73,11 @@ namespace DrinkAutomat
             {
                 Console.WriteLine($"({drink.Key}) {drink.Value} for {priceArray[drink.Key]}$");
             }
+        }
+
+        private static void SendMessageToConsole(string _value)
+        {
+            Console.WriteLine(_value);
         }
     }
 }
