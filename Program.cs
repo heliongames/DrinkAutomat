@@ -28,8 +28,8 @@ namespace DrinkAutomat
         static void Main(string[] args)
         {
             SetupWindow();
-            SetupAutomat();
-            DoLoop();
+            FillMachine();
+            UseMachine();
         }
 
         private static void SetupWindow()
@@ -37,7 +37,7 @@ namespace DrinkAutomat
             Console.Title = "Vending Machine";
         }
 
-        private static void DoLoop()
+        private static void UseMachine()
         {
             ResetLoopData();
             SendMessageToConsole("Wellcome to our Vending Machine!");
@@ -59,7 +59,7 @@ namespace DrinkAutomat
             payedSumm = 0f;
         }
 
-        private static void SetupAutomat()
+        private static void FillMachine()
         {
             drinks.Add(new Drink(36, "Cola", 2.2f, 5));
             drinks.Add(new Drink(24, "Bier", 3.2f, 8));
@@ -147,7 +147,7 @@ namespace DrinkAutomat
                 string _consoleInput = Console.ReadLine();
                 if (_consoleInput == "y" || _consoleInput == "Y")
                 {
-                    DoLoop();
+                    UseMachine();
                     break;
                 } 
                 else if (_consoleInput == "n" || _consoleInput == "N")
