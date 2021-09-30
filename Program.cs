@@ -39,7 +39,7 @@ namespace DrinkAutomat
 
         private static void UseMachine()
         {
-            ResetLoopData();
+            ResetMachine();
             SendMessageToConsole("Wellcome to our Vending Machine!");
             SendMessageToConsole("\nWe have the following drink available:");
             ReadMachineDrinks();
@@ -52,7 +52,7 @@ namespace DrinkAutomat
             ReadConsoleForRestart();
         }
 
-        private static void ResetLoopData()
+        private static void ResetMachine()
         {
             Console.Clear();
             currentSelectedDrink = null;
