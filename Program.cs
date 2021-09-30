@@ -8,14 +8,14 @@ namespace DrinkAutomat
     {
         public int DrinkId;
         public string DrinkName;
-        public float DrinkPrise;
+        public float DrinkPrice;
         public int DrinkCount;
 
-        public Drink(int _id, string _name, float _prise, int _count)
+        public Drink(int _id, string _name, float _price, int _count)
         {
             DrinkId = _id;
             DrinkName = _name;
-            DrinkPrise = _prise;
+            DrinkPrice = _price;
             DrinkCount = _count;
         }
     }
@@ -23,8 +23,10 @@ namespace DrinkAutomat
     class Program
     {
         static List<Drink> drinks = new List<Drink>();
+        
         static Drink currentSelectedDrink;
         static float payedSumm = 0f;
+        
         static void Main(string[] args)
         {
             SetupWindow();
@@ -46,7 +48,7 @@ namespace DrinkAutomat
             SendMessageToConsole("\n");
             SendMessageToConsole("Please enter drink number to select it:");
             ReadConsoleForDrinkId();
-            SendMessageToConsole($"\nPlease pay {currentSelectedDrink.DrinkPrise}$ to recive your selected drink:");
+            SendMessageToConsole($"\nPlease pay {currentSelectedDrink.DrinkPrice}$ to recive your selected drink:");
             ReadConsoleForDrinkPrice();
             SendMessageToConsole("Do you wana buy one other drink (y/n)?");
             ReadConsoleForRestart();
@@ -83,7 +85,7 @@ namespace DrinkAutomat
                         currentSelectedDrink = drinks[_arryId];
                         if(currentSelectedDrink.DrinkCount > 0)
                         {
-                            SendMessageToConsole($"You did selected {currentSelectedDrink.DrinkName} for {currentSelectedDrink.DrinkPrise}$!");
+                            SendMessageToConsole($"You did selected {currentSelectedDrink.DrinkName} for {currentSelectedDrink.DrinkPrice}$!");
                             break;
                         }
                         else
@@ -112,7 +114,7 @@ namespace DrinkAutomat
                 float _pay;
                 if (float.TryParse(_consoleInput, out _pay))
                 {
-                    float rest = (float)decimal.Round((decimal)(currentSelectedDrink.DrinkPrise - _pay - payedSumm), 2);
+                    float rest = (float)decimal.Round((decimal)(currentSelectedDrink.DrinkPrice - _pay - payedSumm), 2);
                     if (rest > 0)
                     {
                         payedSumm += _pay;
@@ -163,7 +165,7 @@ namespace DrinkAutomat
             {
                 if(drink.DrinkCount > 0)
                 {
-                    SendMessageToConsole($"({drink.DrinkId}) {drink.DrinkName} for {drink.DrinkPrise}$ [{drink.DrinkCount}]bottles left");
+                    SendMessageToConsole($"({drink.DrinkId}) {drink.DrinkName} for {drink.DrinkPrice}$ [{drink.DrinkCount}]bottles left");
                 }
             }
         }
